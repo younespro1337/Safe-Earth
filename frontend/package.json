@@ -1,0 +1,69 @@
+{
+  "name": "safeearth",
+  "version": "0.1.0",
+  "private": true,
+  "proxy": "http://localhost:4000",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "set \"GENERATE_SOURCEMAP=false\" &&  react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "analyze": "source-map-explorer 'build/static/js/*.js'"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.14.9",
+    "@mui/material": "^5.14.9",
+    "@mui/x-data-grid": "^6.14.0",
+    "@reduxjs/toolkit": "^1.9.7",
+    "axios": "^1.5.0",
+    "concurrently": "^8.2.1",
+    "country-state-city": "^3.2.1",
+    "formik": "^2.4.5",
+    "fs": "^0.0.1-security",
+    "geolib": "^3.3.4",
+    "jspdf": "^2.5.1",
+    "leaflet": "^1.9.4",
+    "markdown-to-jsx": "^7.4.0",
+    "papaparse": "^5.4.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-file-reader": "^1.1.4",
+    "react-image-gallery": "^1.3.0",
+    "react-leaflet": "^4.2.1",
+    "react-markdown": "^9.0.1",
+    "react-redux": "^8.1.2",
+    "react-router-dom": "^6.16.0",
+    "react-scripts": "^5.0.1",
+    "redux-thunk": "^3.1.0",
+    "yup": "^1.2.0"
+  },
+    "eslintConfig": {
+    "extends": [
+      "react-app",
+      "plugin:jsx-a11y/recommended",
+      "plugin:jest/recommended"
+    ],
+    "plugins": [
+      "jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "eslint-plugin-jest": "^27.4.0",
+    "raw-loader": "^4.0.2"
+  }
+}
