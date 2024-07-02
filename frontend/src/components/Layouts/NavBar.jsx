@@ -34,7 +34,7 @@ function NavBar() {
     const [query, setQuery] = useState('');
     const [suggestions, setSuggestions] = useState([]);
     const [openSuggestions, setOpenSuggestions ] = useState(false);
-    const bingMapsApiKey = "AhWIRQ2jlGpIYCjYkTns5knl56C05ervAIg4S_6cekLW_Gy864oVc8b4LBphnGLK";
+const bingMapsApiKey = process.env.BING_MAP_API_KEY;
     const anchorRef = useRef(null);
     const [snackbarOpen, setSnackbarOpen] = useState(false);
     const [snackbarSeverity, setSnackbarSeverity] = useState('info');
