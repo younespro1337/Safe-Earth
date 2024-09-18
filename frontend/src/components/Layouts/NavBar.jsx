@@ -95,7 +95,7 @@ const bingMapsApiKey = process.env.BING_MAP_API_KEY;
         setSuggestions([]);
         setOpenSuggestions(false);
       }
-    }, [query]);
+}, [query]);
   
 
 

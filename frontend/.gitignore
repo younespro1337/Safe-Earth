@@ -10,7 +10,7 @@
 
 /utils/MapLooksLike.js
 # production
-/build
+# /build
 /templates
 # misc
 .DS_Store

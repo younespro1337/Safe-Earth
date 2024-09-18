@@ -21,9 +21,9 @@ export  const DarkModeSwitch = styled(Switch)(({ theme }) => ({
           opacity: 1,
           backgroundColor: theme.palette.mode === 'dark' ? '#8796A5' : '#aab4be',
         },
-      },
-    },
-    '& .MuiSwitch-thumb': {
+}, 
+},    
+'&.MuiSwitch-thumb': {
       backgroundColor: theme.palette.mode === 'dark' ? '#003892' : '#001e3c',
       width: 32,
       height: 32,

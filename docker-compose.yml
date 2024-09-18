@@ -5,7 +5,7 @@ services:
     image: frontend-image
     ports:
       - "3000:3000"
-    # env_file:
+    env_file:
       - config.env  
     volumes:
       - ./frontend:/usr/src/app
@@ -16,7 +16,7 @@ services:
     image: backend-image
     ports:
       - "4000:4000"
-    # env_file:
+    env_file:
       - config.env  
     volumes:
       - ./backend:/usr/src/app
