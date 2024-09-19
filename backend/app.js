@@ -25,17 +25,21 @@ app.use('/api/v1', material);
 
  // deployment
 if (process.env.NODE_ENV === 'production') {
-  // Serve static files from the 'build' directory
-  app.use(express.static(path.join(__dirname, '../frontend/build')));
+//   // Serve static files from the 'build' directory
+//   app.use(express.static(path.join(__dirname, '../frontend/build')));
+// 
+//   // Serve the 'index.html' file for all routes
+//   app.get('*', (req, res) => {
+//     res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
+//   });
+app.get('/', (req, res) => {
+  res.send('Server is Running! 🚀');
+});
 
-  // Serve the 'index.html' file for all routes
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
-  });
 } else {
-  app.get('/', (req, res) => {
-    res.send('Server is Running! 🚀');
-  });
+  // app.get('/', (req, res) => {
+  //   res.send('Server is Running! 🚀');
+  // });
 }
 
 // error middleware

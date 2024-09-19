@@ -3,7 +3,7 @@ const express = require('express')
 const path = require('path');
 const connectDatabase = require('./config/database');
 const cloudinary = require('cloudinary');
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 8080;
 const fs = require('fs');
 
 // UncaughtException Error
@@ -20,9 +20,7 @@ cloudinary.config({
     api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-const server = app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`)
-});
+
 
  
 // Unhandled Promise Rejection
@@ -36,8 +34,9 @@ process.on('unhandledRejection', (err) => {
 // Serve static files from the public directory
 app.use(express.static(path.join(__dirname, 'public')));
 // Start the server
-app.listen(3000, () => {
-  console.log('Server started on port 3000');
+
+app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`)
 });
 
 

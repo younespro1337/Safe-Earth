@@ -12,6 +12,8 @@ production
 /build
 /.mp4
 misc
+.env
+./package-lock.json
 .DS_Store
 .env.local
 .env.development.local
