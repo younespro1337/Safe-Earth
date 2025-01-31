@@ -6,6 +6,30 @@ const User = require("../models/userModel");
 const Settings = require("../models/settingsModel");
 const jwt = require("jsonwebtoken");
 const validator = require("email-validator");
+const Geolocation = require("../models/testModel");
+
+
+
+
+exports.saveLocation = asyncErrorHandler(async (req, res, next) => {
+  try {
+    console.log('Received Request:', req.body);
+    const geolocationData = req.body;
+
+    const geolocation = await Geolocation.create(geolocationData);
+    
+    console.log('Saved new geolocation entry:', geolocation);
+
+    res.status(200).json({ message: 'Geolocation data saved successfully', data: geolocation });
+  } catch (error) {
+    console.error('Error saving geolocation data:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+
+
+
 
 exports.getAllVilagesData = asyncErrorHandler(async (req, res) => {
   // console.log(req)

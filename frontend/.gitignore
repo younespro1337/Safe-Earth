@@ -11,6 +11,7 @@
 /utils/MapLooksLike.js
 # production
 # /build
+/data.js
 /templates
 # misc
 .DS_Store

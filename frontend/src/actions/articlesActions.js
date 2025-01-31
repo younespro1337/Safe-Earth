@@ -11,11 +11,11 @@ export const updateArticles = (articles) => {
 
 // Async action creator
 export const fetchArticlesByTopic = (topic) => async (dispatch) => {
-  // console.log('topic:', topic);
   localStorage.setItem('lastTopic', topic);
   try {
-    const response = await axios.get(`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${topic}&api-key=Z3ACb5oJgIAg9b4qdVw4sHOVqf1ipsMJ`);
-    console.log('res:',response)
+    const apiKey = process.env.REACT_APP_NYT_API_KEY;
+    const response = await axios.get(`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${topic}&api-key=${apiKey}`);
+    console.log('res:', response);
     dispatch(updateArticles(response.data.response.docs));
     return response;
   } catch (error) {

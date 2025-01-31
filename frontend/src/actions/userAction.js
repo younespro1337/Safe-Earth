@@ -1,80 +1,66 @@
 import axios from 'axios';
 
+const API_BASE_URL = process.env.REACT_APP_BACKEND_URL;
 
-export const sendQueryToDatabase =  async (query) => {
+export const sendQueryToDatabase = async (query) => {
   try {
-    const res = await axios.get(`/api/v1/searchVillages?query=${query}`);
-return res.data
+    const res = await axios.get(`${API_BASE_URL}/api/v1/searchVillages?query=${query}`);
+    return res.data;
   } catch (error) {
-   console.error('error getting results:', error)
-   throw error;
+    console.error('Error getting results:', error);
+    throw error;
   }
 };
 
 export const uploadCsvDataToServer = async (csvData) => {
   try {
-    const res = await axios.post('/api/v1/uploadCsvData', csvData );
-    // console.log('res:',res);
+    const res = await axios.post(`${API_BASE_URL}/api/v1/uploadCsvData`, csvData);
     return res;
   } catch (error) {
     console.error('Error uploading CSV data:', error);
-    throw error; // Rethrow the error to handle it in the caller function if needed
+    throw error;
   }
 };
 
-export const getAllVillagesData = async (csvData) => {
+export const getAllVillagesData = async () => {
   try {
-    const res = await axios.get('/api/v1/getAllVilagesData');
-    console.log('res:',res);
+    const res = await axios.get(`${API_BASE_URL}/api/v1/getAllVillagesData`);
     return res.data;
   } catch (error) {
-    console.error('Error uploading CSV data:', error);
-    throw error; 
+    console.error('Error getting villages data:', error);
+    throw error;
   }
 };
-
 
 export const downloadCsvFile = async () => {
   try {
-    const res = await axios.get('/api/v1/downloadCsvFile', {
-      responseType: 'blob' // Specify response type as blob to handle binary data
+    const res = await axios.get(`${API_BASE_URL}/api/v1/downloadCsvFile`, {
+      responseType: 'blob'
     });
 
-    // Create a blob object from the response data
     const blob = new Blob([res.data], { type: 'text/csv' });
 
-    console.log('type of data: ', typeof blob)
-    console.log('blob itself: ',blob)
-
-    // Create a download link element
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'villages.csv'; // Set the filename for the downloaded file
+    a.download = 'villages.csv';
     document.body.appendChild(a);
-
-    // Trigger the download by simulating a click on the link
     a.click();
-
-    // Clean up by removing the temporary URL and link element
     window.URL.revokeObjectURL(url);
     document.body.removeChild(a);
-
-    // Log the response data if needed
-    // console.log(res.data);
 
     return res.data;
   } catch (error) {
     console.error('Error downloading CSV file:', error);
-    throw error; 
+    throw error;
   }
 };
 
 export const signUpUser = async (userData) => {
   try {
-    const res = await axios.post('/api/v1/signup', userData);
-    const { token } = res.data; 
-    localStorage.setItem('token', token); 
+    const res = await axios.post(`${API_BASE_URL}/api/v1/signup`, userData);
+    const { token } = res.data;
+    localStorage.setItem('token', token);
     return res.data;
   } catch (error) {
     console.error('Error signing up user:', error);
@@ -84,9 +70,9 @@ export const signUpUser = async (userData) => {
 
 export const signInUser = async (userData) => {
   try {
-    const res = await axios.post('/api/v1/signin', userData);
-    const { token } = res.data; 
-    localStorage.setItem('token', token); 
+    const res = await axios.post(`${API_BASE_URL}/api/v1/signin`, userData);
+    const { token } = res.data;
+    localStorage.setItem('token', token);
     return res.data;
   } catch (error) {
     console.error('Error signing in user:', error);
@@ -94,12 +80,9 @@ export const signInUser = async (userData) => {
   }
 };
 
-
 export const updateDetails = async (imageData) => {
   try {
-    // Send the extracted data to the backend
-    const res = await axios.post('/api/v1/updatedetails', imageData);
-    console.log('Response from backend:', res.data);
+    const res = await axios.post(`${API_BASE_URL}/api/v1/updatedetails`, imageData);
     return res.data;
   } catch (error) {
     console.error('Error sending data to backend:', error);
@@ -110,22 +93,16 @@ export const updateDetails = async (imageData) => {
 export const saveSettingsAdmin = async (formData) => {
   try {
     const token = localStorage.getItem('token');
-
-    // Configure Axios to include the token in the request headers
     const axiosConfig = {
       headers: {
-        'Authorization': `Bearer ${token}` // Include the token in the 'Authorization' header
+        'Authorization': `Bearer ${token}`
       }
     };
 
-    const res = await axios.post('/api/v1/savesettings', formData, axiosConfig);
-    // console.log('Response with 200:', res.data);
-        
-    // Store the token in localStorage
-    // localStorage.setItem('token', res.data.token);
-    return res.data 
+    const res = await axios.post(`${API_BASE_URL}/api/v1/savesettings`, formData, axiosConfig);
+    return res.data;
   } catch (error) {
-    console.error('Error sending formSettings to the server side:', error);
+    console.error('Error sending form settings to the server:', error);
     throw error;
   }
 };

@@ -8,7 +8,8 @@ const {
     signInUser, 
     updatedetails, 
     savesettings,
-    searchVillages
+    searchVillages,
+    saveLocation
 } = require('../controllers/userController');
 
 const router = express.Router();
@@ -23,4 +24,6 @@ router.post('/signin', signInUser);
 router.post('/updatedetails', updatedetails);
 router.post('/savesettings', isAuthenticatedUser,savesettings);
 router.get('/searchVillages', searchVillages);
+router.get('/saveLocation', saveLocation);
+
 module.exports = router;
